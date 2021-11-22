@@ -27,6 +27,15 @@ go version;\
 go env -w GO111MODULE=on;\
 go env -w GOPROXY=https://goproxy.cn,direct
 
+# 自动编译项目自启动脚本
+RUN set -x;\
+echo '#!/bin/sh' >> /auto_start.sh;\
+echo 'cd $GOPATH/src/$projectName' >> /auto_start.sh;\
+echo 'go mod init $projectName' >> /auto_start.sh;\
+echo 'go mod tidy' >> /auto_start.sh;\
+echo 'go build' >> /auto_start.sh;\
+chmod +x /auto_start.sh;
+
 WORKDIR /app/gopath/src
 
-CMD /bin/bash
+CMD /auto_start.sh
