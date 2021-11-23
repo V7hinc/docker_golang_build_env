@@ -33,7 +33,7 @@ echo '#!/bin/sh' >> /auto_start.sh;\
 echo 'cd $GOPATH/src/$projectName' >> /auto_start.sh;\
 echo 'go mod init $projectName' >> /auto_start.sh;\
 echo 'go mod tidy' >> /auto_start.sh;\
-echo 'go build' >> /auto_start.sh;\
+echo 'go install' >> /auto_start.sh;\
 chmod +x /auto_start.sh;
 
 WORKDIR /app/gopath/src
